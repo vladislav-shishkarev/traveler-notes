@@ -5,6 +5,8 @@
   width: 20em;
   height: 20em;
   cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
   user-select: none;
 }
 .clip img {

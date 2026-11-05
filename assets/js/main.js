@@ -22,3 +22,11 @@ document.addEventListener('keydown', event => {
     menuButton.focus();
   }
 });
+
+// Удержание пальца внутри ролика не должно открывать меню картинки.
+const animationClip = document.querySelector('.animation-demo .clip');
+if (animationClip) {
+  animationClip.addEventListener('contextmenu', event => {
+    event.preventDefault();
+  });
+}
