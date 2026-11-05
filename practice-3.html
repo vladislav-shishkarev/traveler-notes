@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Мальчик, мяч и неожиданный кирпич. Небольшой Flexbox-ролик реагирует на наведение курсора и удержание нажатия.">
+  <meta name="theme-color" content="#f8f2e8">
+  <title>Практическая №3 — Одна сцена. Несколько состояний. · Записки Путешественника</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animation.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="logo-slot"></span>
+        <span class="brand-name">Записки Путешественника<span class="brand-sub">Дневник странствий по Тейвату</span></span>
+      </a>
+      <button class="menu-toggle" type="button">Меню ☰</button>
+      <nav id="site-navigation" class="site-nav"><a href="index.html">Главная</a><a href="teyvat.html">Мир Тейвата</a><a href="characters.html">Персонажи</a><a href="index.html#practices">Практические</a></nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <nav class="breadcrumbs"><a href="index.html">Главная</a> / <a href="index.html#practices">Практические</a> / №3</nav>
+    <header class="page-intro"><p class="eyebrow">Практическая работа №3</p><h1>Одна сцена.<br>Несколько состояний.</h1><p>Мальчик, мяч и неожиданный кирпич. Небольшой Flexbox-ролик реагирует на наведение курсора и удержание нажатия.</p></header>
+    <section class="demo-panel"><div class="demo-label"><span>Практическая №3 · Flexbox-ролик</span><span>Наведи и нажми</span></div><div class="demo-stage animation-demo"><div class="clip">
+        <div class="clip__scene">
+          <p class="clip__title clip__title--hover">Где мяч?</p>
+          <p class="clip__title clip__title--active">Это кирпич!</p>
+
+          <div class="clip__boy">
+            <img class="clip__boy-img clip__boy-img--stand" src="assets/exercises/boy1.png" alt="Мальчик показывает рукой" draggable="false">
+            <img class="clip__boy-img clip__boy-img--think" src="assets/exercises/boy2.png" alt="Мальчик задумался" draggable="false">
+            <img class="clip__boy-img clip__boy-img--fall" src="assets/exercises/boy3.png" alt="Мальчик падает" draggable="false">
+          </div>
+
+          <div class="clip__ball-x">
+            <div class="clip__ball-y">
+              <img class="clip__ball" src="assets/exercises/ball.png" alt="Мяч" draggable="false">
+            </div>
+          </div>
+
+          <div class="clip__brick-x">
+            <div class="clip__brick-y">
+              <div class="clip__brick">
+                <img class="clip__brick-img" src="assets/exercises/box.png" alt="Кирпич" draggable="false">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></div><p class="demo-help">На компьютере наведи курсор на сцену, затем удерживай кнопку мыши. На телефоне нажми на сцену и удерживай палец.</p></section>
+    <div class="ornament">✦</div>
+    <article class="article-copy"><p class="eyebrow">Запись о работе</p><h2>Как это устроено</h2><p>Вторая запись посвящена движению. Внутри небольшой сцены находятся изображения мальчика, мяча и кирпича. Сюжет меняется в зависимости от действий пользователя: наведение запускает появление предметов, а удержание нажатия включает другую реакцию. У демонстрации есть спокойное начальное состояние, поэтому её можно рассмотреть ещё до взаимодействия. Чтобы повторить происходящее, достаточно убрать курсор со сцены и навести его снова.</p>
+    <p>Основа композиции использует Flexbox. Этот способ вёрстки помогает выровнять содержимое сцены вдоль выбранных направлений. При этом отдельные движущиеся предметы располагаются относительно общего контейнера. Здесь сочетаются два подхода: Flexbox задаёт базовое расположение, а позиционирование позволяет поместить мяч или кирпич в нужную точку. Для небольшого ролика такое сочетание даёт понятную структуру и не требует рисовать каждый кадр вручную.</p>
+    <p>У мальчика подготовлены три изображения. В начальном состоянии виден один рисунок, при наведении появляется задумавшийся персонаж, а при нажатии — падающий. Картинки лежат в одном месте, и стили меняют их прозрачность. Поэтому смена позы не перестраивает весь макет и не сдвигает соседние элементы. Плавный переход между значениями прозрачности делает замену менее резкой и помогает связать отдельные состояния сцены.</p>
+    <p>Само движение описывают правила keyframes. Для предметов отдельно задаются перемещения по горизонтали и вертикали, а вложенные контейнеры объединяют эти направления. Свойство transform меняет визуальное положение объекта без изменения соседних блоков страницы. Разные задержки позволяют мячу и кирпичу появляться последовательно. Дополнительная анимация вращает предмет, если навести курсор непосредственно на него, а короткое повторяющееся смещение создаёт эффект тряски сцены.</p>
+    <p>Важную роль играют псевдоклассы hover и active. Первый действует, пока указатель находится над элементом, второй — во время нажатия. Для демонстрации этого достаточно: отдельный JavaScript не нужен. При объяснении полезно показать эти два состояния по очереди и назвать свойство, которое меняется. На устройстве с сенсорным экраном удобнее использовать удержание пальца, потому что обычного постоянного наведения там нет.</p>
+    <p>Четыре иллюстрации ниже фиксируют основные моменты ролика. Они помогают сравнить исходную сцену, появление предметов и реакцию персонажа без необходимости ловить нужный момент анимации. Сама демонстрация остаётся интерактивной, а изображения служат дополнением к ней. На небольшом экране размер сцены уменьшается пропорционально: координаты заданы в единицах em, поэтому взаимное расположение её деталей сохраняется.</p></article>
+    <section><div class="snapshot-grid"><figure><img src="assets/screenshots/practice-3-1.png" alt="До взаимодействия" width="700" height="500" loading="lazy"><figcaption>01 · До взаимодействия</figcaption></figure><figure><img src="assets/screenshots/practice-3-2.png" alt="Появление мяча" width="700" height="500" loading="lazy"><figcaption>02 · Появление мяча</figcaption></figure><figure><img src="assets/screenshots/practice-3-3.png" alt="Предметы в сцене" width="700" height="500" loading="lazy"><figcaption>03 · Предметы в сцене</figcaption></figure><figure><img src="assets/screenshots/practice-3-4.png" alt="Реакция на нажатие" width="700" height="500" loading="lazy"><figcaption>04 · Реакция на нажатие</figcaption></figure></div></section>
+    <a class="back-link" href="index.html#practices">← Ко всем практическим</a>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><p class="footer-brand">Записки Путешественника</p><p class="footer-small">© 2026 Владислав · учебный проект<br>Мир и изображения Genshin Impact — HoYoverse.</p></div>
+      <nav class="footer-links"><a href="index.html#practices">Работы</a><a href="https://genshin.hoyoverse.com/ru/map" target="_blank" rel="noopener noreferrer">О мире игры ↗</a><a href="#main">Наверх ↑</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

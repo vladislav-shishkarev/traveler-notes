@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Интерактивная работа с DOM: случайный порядок вопросов, выбор ответов, анимация и итоговый результат. Содержание исходного теста сохранено.">
+  <meta name="theme-color" content="#f8f2e8">
+  <title>Практическая №6 — Пять вопросов. Насколько ты на сленге? · Записки Путешественника</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/quiz.css">
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/quiz.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="logo-slot"></span>
+        <span class="brand-name">Записки Путешественника<span class="brand-sub">Дневник странствий по Тейвату</span></span>
+      </a>
+      <button class="menu-toggle" type="button">Меню ☰</button>
+      <nav id="site-navigation" class="site-nav"><a href="index.html">Главная</a><a href="teyvat.html">Мир Тейвата</a><a href="characters.html">Персонажи</a><a href="index.html#practices">Практические</a></nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <nav class="breadcrumbs"><a href="index.html">Главная</a> / <a href="index.html#practices">Практические</a> / №6</nav>
+    <header class="page-intro"><p class="eyebrow">Практическая работа №6</p><h1>Пять вопросов.<br>Насколько ты на сленге?</h1><p>Интерактивная работа с DOM: случайный порядок вопросов, выбор ответов, анимация и итоговый результат. Содержание исходного теста сохранено.</p></header>
+
+    <section class="demo-panel quiz-exercise">
+      <div class="demo-label"><span>Практическая №6 · DOM-тест</span><span>Вариант 1 · Сленг</span></div>
+      <h2>Ты на сленге?</h2>
+      <div class="instructions">Вопросы появляются по очереди. Открой текущий вопрос и выбери один ответ. После завершения нажми на любой вопрос, чтобы посмотреть объяснение.</div>
+      <div class="progress-row"><span id="progress-text">Отвечено: 0 из 5</span><span>Тема: сленг</span></div>
+      <progress id="progress" value="0" max="5"></progress>
+      <section id="summary" class="summary" hidden><h2>Вопросы закончились</h2><p id="score"></p><button id="restart" class="restart" type="button">Пройти ещё раз ↻</button></section>
+      <p id="status" class="status" role="status">Нажми на вопрос, чтобы увидеть варианты ответа.</p>
+      <section id="quiz" class="quiz"></section>
+      <noscript>Для прохождения теста включи JavaScript в браузере. Остальные разделы сайта доступны без него.</noscript>
+    </section>
+
+    <div class="ornament">✦</div>
+    <article class="article-copy"><p class="eyebrow">Запись о работе</p><h2>Как это устроено</h2><p>Эта практическая работа показывает, как страница меняется во время взаимодействия с пользователем. В тесте пять вопросов о сленге. Каждый вопрос имеет несколько вариантов, и только один из них считается правильным. Сначала на странице появляется только первый вопрос. После выбора ответа нужно дождаться окончания анимации — затем ниже добавляется следующий вопрос. Пройденные вопросы остаются в списке с отметками результата, а открыть их разбор можно после завершения всего теста.</p>
+    <p>Данные хранятся в массиве объектов JavaScript. У каждого объекта есть текст вопроса, массив ответов, индекс правильного варианта и пояснение. Такое разделение позволяет хранить содержание отдельно от создания HTML-элементов. Скрипт берёт данные, создаёт кнопки и связывает каждую кнопку с нужным действием. Важная деталь: индекс правильного ответа относится к исходному массиву, поэтому при перемешивании необходимо сохранить связь между вариантом и его правильностью.</p>
+    <p>Порядок вопросов и вариантов меняется при каждом запуске. Вопросы перемешиваются заранее, но их блоки создаются по одному: сначала первый, затем следующий после завершённого ответа. Для этого используется перемешивание копии массива: элементы последовательно меняются местами со случайно выбранными. Исходные данные при этом остаются доступными для нового прохождения. Нумерация относится к показанному порядку, поэтому на странице вопросы всегда идут под понятными последовательными номерами. После перезапуска заново сбрасываются результат, прогресс и состояния всех блоков.</p>
+    <p>Ответ можно выбрать только один раз. После нажатия кнопки блокируются, а результат выбора сохраняется. При правильном ответе блок увеличивается и показывает пояснение, при ошибке меняется оформление. Затем CSS-анимация по очереди уводит ответы вправо. JavaScript отвечает за порядок действий и задержки, а перемещение выполняется средствами CSS. Такое разделение помогает объяснить, какая часть работы относится к логике теста, а какая — к его внешнему виду.</p>
+    <p>Когда все вопросы закончились, над областью теста появляются сообщение и число правильных ответов. Теперь вопросы можно открывать повторно для просмотра правильного варианта и объяснения. Одновременно показывается только один разбор, чтобы страница оставалась удобной для чтения. Кнопка повторного прохождения возвращает начальное состояние и снова перемешивает данные. Ошибка в ответе не мешает завершить тест и позже прочитать пояснение.</p>
+    <p>Проверять работу стоит несколькими способами: пройти её без ошибок, выбрать неверные варианты и попробовать быстро нажать несколько раз подряд. Отдельно полезно убедиться, что во время анимации нельзя начать другой вопрос. Иллюстрации ниже показывают основные состояния интерфейса, а действующий тест находится выше. На компьютере ответы располагаются горизонтально, на узком экране переносятся, чтобы текст оставался читаемым и кнопки было удобно нажимать.</p></article>
+    <section><div class="snapshot-grid"><figure><img src="assets/screenshots/practice-6-1.png" alt="Начало теста" width="700" height="500" loading="lazy"><figcaption>01 · Начало теста</figcaption></figure><figure><img src="assets/screenshots/practice-6-2.png" alt="Открытый вопрос" width="700" height="500" loading="lazy"><figcaption>02 · Открытый вопрос</figcaption></figure><figure><img src="assets/screenshots/practice-6-3.png" alt="Верный ответ и пояснение" width="700" height="500" loading="lazy"><figcaption>03 · Верный ответ и пояснение</figcaption></figure><figure><img src="assets/screenshots/practice-6-4.png" alt="Результат прохождения" width="700" height="500" loading="lazy"><figcaption>04 · Результат прохождения</figcaption></figure></div></section>
+    <a class="back-link" href="index.html#practices">← Ко всем практическим</a>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><p class="footer-brand">Записки Путешественника</p><p class="footer-small">© 2026 Владислав · учебный проект<br>Мир и изображения Genshin Impact — HoYoverse.</p></div>
+      <nav class="footer-links"><a href="index.html#practices">Работы</a><a href="https://genshin.hoyoverse.com/ru/map" target="_blank" rel="noopener noreferrer">О мире игры ↗</a><a href="#main">Наверх ↑</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

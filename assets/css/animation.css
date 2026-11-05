@@ -1,0 +1,159 @@
+.clip {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 8px;
+  width: 20em;
+  height: 20em;
+  cursor: pointer;
+  user-select: none;
+}
+.clip img {
+  -webkit-user-drag: none;
+}
+
+.clip__scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(#ffffff 15%, #3d8b2b);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 0 0 0.5em 1.5em;
+  box-sizing: border-box;
+}
+
+.clip__title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.4em;
+  margin: 0;
+  text-align: center;
+  font: 600 2.4em/1.2 Arial, sans-serif;
+  color: #1b1b1b;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.clip__title--active {
+  top: 30%;
+  transform: rotate(-20deg);
+}
+
+.clip__boy {
+  position: relative;
+}
+.clip__boy-img {
+  display: block;
+  height: 15em;
+  transition: opacity 0.3s;
+}
+.clip__boy-img--think,
+.clip__boy-img--fall {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+}
+.clip__boy-img--fall {
+  transform-origin: 30% 100%;
+}
+
+.clip__ball-x {
+  position: absolute;
+  right: 0.6em;
+  bottom: 0.8em;
+  transform: translateX(-13em);
+}
+.clip__ball-y {
+  transform: translateY(-20em);
+}
+.clip__ball {
+  display: block;
+  width: 4em;
+}
+
+.clip__brick-x {
+  position: absolute;
+  left: 11.2em;
+  bottom: 1.2em;
+  transform: translateX(12em);
+}
+.clip__brick-y {
+  transform: translateY(-13em);
+}
+
+.clip__brick {
+  position: relative;
+  width: 4.2em;
+  height: 4.5em;
+  overflow: hidden;
+}
+.clip__brick-img {
+  position: absolute;
+  width: 25em;
+  left: -12.9em;
+  top: -18.1em;
+}
+
+.clip:hover .clip__title--hover { opacity: 1; }
+.clip:hover .clip__boy-img--stand { opacity: 0; }
+.clip:hover .clip__boy-img--think { opacity: 1; }
+
+.clip:hover .clip__ball-x { animation: clip-arrive 1.2s linear forwards; }
+.clip:hover .clip__ball-y { animation: clip-arrive 1.2s ease-in forwards; }
+
+.clip:hover .clip__brick-x { animation: clip-arrive 1s ease-out 0.3s forwards; }
+.clip:hover .clip__brick-y { animation: clip-arrive 1s ease-in 0.3s forwards; }
+
+.clip__ball:hover,
+.clip__brick:hover {
+  animation: clip-spin 1s linear infinite;
+}
+
+.clip:active .clip__title--hover { opacity: 0; }
+.clip:active .clip__title--active { opacity: 1; }
+.clip:active .clip__boy-img--think { opacity: 0; }
+.clip:active .clip__boy-img--fall {
+  opacity: 1;
+  animation: clip-fall 0.3s ease-in forwards;
+}
+
+.clip:active .clip__brick-x { animation: clip-brick-out-x 1.2s linear forwards; }
+.clip:active .clip__brick-y { animation: clip-brick-out-y 1.2s ease-in-out forwards; }
+
+.clip:active .clip__scene {
+  animation: clip-shake 0.1s linear infinite alternate;
+}
+
+@keyframes clip-arrive {
+  to { transform: none; }
+}
+@keyframes clip-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes clip-fall {
+  from { transform: translateY(-2em) rotate(15deg); }
+  to   { transform: none; }
+}
+@keyframes clip-brick-out-x {
+  from { transform: none; }
+  to   { transform: translateX(10em); }
+}
+
+@keyframes clip-brick-out-y {
+  0%   { transform: none; }
+  20%  { transform: translateY(-4em); }
+  40%  { transform: translateY(-2.5em); }
+  60%  { transform: translateY(-7.5em); }
+  80%  { transform: translateY(-6em); }
+  100% { transform: translateY(-11em); }
+}
+@keyframes clip-shake {
+  from { transform: translateY(-0.3em); }
+  to   { transform: translateY(0.3em); }
+}
+
+

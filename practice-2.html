@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Рисунок из обычных HTML-элементов: солнце, облака, трава и трактор. Вся сцена создаётся стилями, без готовой картинки.">
+  <meta name="theme-color" content="#f8f2e8">
+  <title>Практическая №2 — Маленький трактор. Большая работа CSS. · Записки Путешественника</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/tractor.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="logo-slot"></span>
+        <span class="brand-name">Записки Путешественника<span class="brand-sub">Дневник странствий по Тейвату</span></span>
+      </a>
+      <button class="menu-toggle" type="button">Меню ☰</button>
+      <nav id="site-navigation" class="site-nav"><a href="index.html">Главная</a><a href="teyvat.html">Мир Тейвата</a><a href="characters.html">Персонажи</a><a href="index.html#practices">Практические</a></nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <nav class="breadcrumbs"><a href="index.html">Главная</a> / <a href="index.html#practices">Практические</a> / №2</nav>
+    <header class="page-intro"><p class="eyebrow">Практическая работа №2</p><h1>Маленький трактор.<br>Большая работа CSS.</h1><p>Рисунок из обычных HTML-элементов: солнце, облака, трава и трактор. Вся сцена создаётся стилями, без готовой картинки.</p></header>
+    <section class="demo-panel"><div class="demo-label"><span>Практическая №2 · CSS-рисунок</span><span>200 × 200</span></div><div class="demo-stage tractor-demo"><div role="img"><div class="pic">
+                    <div class="sun"></div>
+                    <div class="cloud cloud1"></div>
+                    <div class="cloud cloud2"></div>
+                    <div class="cloud cloud3"></div>
+                    <div class="smoke smoke1"></div>
+                    <div class="smoke smoke2"></div>
+                    <div class="smoke smoke3"></div>
+                    <div class="roof"></div>
+                    <div class="post post-left"></div>
+                    <div class="post post-right"></div>
+                    <div class="pipe"></div>
+                    <div class="seat"></div>
+                    <div class="hood"></div>
+                    <div class="body"></div>
+                    <div class="wheel wheel-big"></div>
+                    <div class="wheel wheel-small"></div>
+                    <div class="grass"></div>
+                </div></div></div><p class="demo-help">Это действующий CSS-рисунок. Снимки его деталей находятся ниже.</p></section>
+    <div class="ornament">✦</div>
+    <article class="article-copy"><p class="eyebrow">Запись о работе</p><h2>Как это устроено</h2><p>Эта работа начинается с простого вопроса: можно ли нарисовать небольшую сцену средствами вёрстки? В демонстрации есть трактор, два колеса, солнце, облака и полоска травы. Все эти предметы состоят из обычных элементов страницы. У каждого элемента есть собственный класс, а внешний вид задаётся в отдельном файле стилей. Если изменить цвет или размер детали, рисунок сразу изменится вместе с соответствующим правилом.</p>
+    <p>Основа сцены — квадратный контейнер. Для него задано относительное позиционирование, а его детали располагаются абсолютно. Благодаря этому координаты колёс и корпуса отсчитываются от границ рисунка. Вся композиция остаётся единым блоком: её можно поместить в другую часть страницы, не пересчитывая расположение отдельных деталей относительно окна браузера. Ограничение переполнения оставляет видимой только область самой сцены.</p>
+    <p>Округлые формы получаются через свойство border-radius. Так построены колёса, облака и маленькие клубы дыма. Границы помогают показать обод колеса и отдельные части сиденья. Для капота и крыши используются простые многоугольные обрезки: они меняют силуэт прямоугольника, сохраняя сам элемент обычным блоком. Поэтому рисунок можно разобрать на небольшие, понятные действия, а не воспринимать как одну сложную конструкцию.</p>
+    <p>Градиенты добавляют деталям цвет и объём. У облака оттенок меняется от светлого центра к голубому краю, а у корпуса появляются более тёмные участки. Повторяющийся градиент создаёт ритм травы и лучей солнца. Здесь полезно различать форму и окраску: сначала размеры и границы задают силуэт, затем фон помогает сделать этот силуэт узнаваемым. Такой порядок упрощает и создание рисунка, и поиск ошибки в отдельной детали.</p>
+    <p>Проверять сцену удобно по частям. Сначала найти общий контейнер, затем временно выделить корпус, колёса и верхнюю часть. Четыре изображения ниже показывают общий результат и три увеличенных фрагмента. Они сделаны с работающей демонстрации, поэтому соответствуют тому, что отображается выше. Сравнение общего вида с деталями помогает объяснить, как маленькие элементы складываются в цельную картинку.</p>
+    <p>Сам рисунок сохраняет исходный размер и пропорции, а окружающая страница подстраивается под ширину экрана. На телефоне демонстрация остаётся по центру, пояснения читаются одной колонкой, а иллюстрации перестраиваются в компактную сетку. Эта разница важна: адаптивным должен быть весь макет страницы, при этом у небольшой учебной сцены вполне может оставаться собственная фиксированная система координат.</p></article>
+    <section><div class="snapshot-grid"><figure><img src="assets/screenshots/practice-2-1.png" alt="Сцена целиком" width="700" height="500" loading="lazy"><figcaption>01 · Сцена целиком</figcaption></figure><figure><img src="assets/screenshots/practice-2-2.png" alt="Колёса и корпус" width="700" height="500" loading="lazy"><figcaption>02 · Колёса и корпус</figcaption></figure><figure><img src="assets/screenshots/practice-2-3.png" alt="Солнце и облака" width="700" height="500" loading="lazy"><figcaption>03 · Солнце и облака</figcaption></figure><figure><img src="assets/screenshots/practice-2-4.png" alt="Капот и кабина" width="700" height="500" loading="lazy"><figcaption>04 · Капот и кабина</figcaption></figure></div></section>
+    <a class="back-link" href="index.html#practices">← Ко всем практическим</a>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><p class="footer-brand">Записки Путешественника</p><p class="footer-small">© 2026 Владислав · учебный проект<br>Мир и изображения Genshin Impact — HoYoverse.</p></div>
+      <nav class="footer-links"><a href="index.html#practices">Работы</a><a href="https://genshin.hoyoverse.com/ru/map" target="_blank" rel="noopener noreferrer">О мире игры ↗</a><a href="#main">Наверх ↑</a></nav>
+    </div>
+  </footer>
+</body>
+</html>
