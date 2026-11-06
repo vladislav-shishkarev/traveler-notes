@@ -1,4 +1,3 @@
-// Индекс correct относится к исходному массиву ответов, до перемешивания.
 const questions = [
   {
     text: 'А когда с человеком может произойти дрожемент?',
@@ -43,7 +42,6 @@ let answered = 0;
 let score = 0;
 let finished = false;
 
-// Перемешиваем массив, меняя элементы местами.
 function shuffle(array) {
   const result = [...array];
   for (let i = result.length - 1; i > 0; i--) {
@@ -80,7 +78,6 @@ function start() {
   updateProgress();
 }
 
-// Создаём только очередной вопрос. Будущие вопросы пока остаются в массиве.
 function addQuestion() {
   const index = items.length;
   const data = questionOrder[index];
@@ -125,7 +122,7 @@ function openQuestion(item) {
 
 function chooseAnswer(item, answers, chosen, correct) {
   if (item.done) return;
-  item.done = true; // Защита от повторных кликов во время анимации.
+  item.done = true;
   const buttons = [...answers.children];
   buttons.forEach(button => { button.disabled = true; });
   if (correct) {
@@ -145,7 +142,6 @@ function chooseAnswer(item, answers, chosen, correct) {
       item.marker.textContent = '✕';
       item.marker.classList.add('wrong-marker');
     }
-    // При верном выборе сначала уходят неверные ответы, затем правильный.
     let ordered = buttons;
     if (correct) {
       ordered = buttons.filter(button => button !== chosen);

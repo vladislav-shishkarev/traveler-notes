@@ -96,6 +96,7 @@
 .clip__brick-img {
   position: absolute;
   width: 25em;
+  max-width: none;
   left: -12.9em;
   top: -18.1em;
 }

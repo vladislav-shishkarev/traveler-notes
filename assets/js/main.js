@@ -1,4 +1,3 @@
-// Без JavaScript ссылки меню остаются видны. Скрипт включает компактный режим.
 document.documentElement.classList.add('js');
 
 const menuButton = document.querySelector('.menu-toggle');
@@ -23,7 +22,6 @@ document.addEventListener('keydown', event => {
   }
 });
 
-// Удержание пальца внутри ролика не должно открывать меню картинки.
 const animationClip = document.querySelector('.animation-demo .clip');
 if (animationClip) {
   animationClip.addEventListener('contextmenu', event => {

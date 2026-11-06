@@ -45,6 +45,30 @@ figure { margin: 0; }
 
 .logo-slot { position: relative; display: block; flex: 0 0 56px; width: 56px; height: 56px; }
 
+.primogem {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(
+    135deg,
+    #b9f2ff 0%,
+    #48b8db 25%,
+    #e6b87a 65%
+  );
+  clip-path: polygon(
+    50% 0%,
+    65% 35%,
+    100% 50%,
+    65% 65%,
+    50% 100%,
+    35% 65%,
+    0% 50%,
+    35% 35%
+  );
+}
+
 .eyebrow { color: var(--accent); font-size: 10px; font-weight: 600; letter-spacing: 2.7px; text-transform: uppercase; }
 .eyebrow::before { content: '✦'; color: var(--gold); margin-right: 12px; }
 .hero { display: grid; grid-template-columns: .95fr 1.12fr; align-items: center; gap: 50px; padding-block: 55px 48px; }
